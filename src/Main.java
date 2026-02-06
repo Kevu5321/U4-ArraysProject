@@ -21,6 +21,14 @@ public class Main {
 
         String[] lines = fileData.split("\n");
 
+        int fiveOfAKind = 0;
+        int fullHouse = 0;
+        int fourOfAKind = 0;
+        int threeOfAKind = 0;
+        int twoPair = 0;
+        int pair = 0;
+        int highCard = 0;
+
         for (String line : lines) {
             int bar = line.indexOf("|");
 
@@ -30,54 +38,37 @@ public class Main {
             String[] numbers = hand.split(",");
 
             int[] values = new int[numbers.length];
-
-            System.out.println(Arrays.toString(numbers));
             Hand hand1 = new Hand(numbers);
-            hand1.determineHandType();
-            System.out.println(numbers[0]);
-            System.out.println(numbers[4]);
 
+            if (hand1.determineHandType() == 6){
+                fiveOfAKind++;
+            } else if (hand1.determineHandType() == 5) {
+                fullHouse++;
+            } else if (hand1.determineHandType() == 4) {
+                fourOfAKind++;
+            } else if (hand1.determineHandType() == 3) {
+                threeOfAKind++;
+            } else if (hand1.determineHandType() == 2) {
+                twoPair++;
+            } else if (hand1.determineHandType() == 1) {
+                pair++;
+            } else if (hand1.determineHandType() == 0) {
+                highCard++;
+            }
 
             System.out.println();
-//            System.out.println(Arrays.toString(values));
         }
 
-//        System.out.println("Number of five of a kind hands: " );
-//        System.out.println("Number of full house hands: " );
-//        System.out.println("Number of four of a kind hands: " );
-//        System.out.println("Number of three of a kind hands: " );
-//        System.out.println("Number of two pair hands: " );
-//        System.out.println("Number of one pair hands: " );
-//        System.out.println("Number of high card hands: " );
+        //Not sure why there is a gap above when printed
+        System.out.println("Number of five of a kind hands: " + fiveOfAKind);
+        System.out.println("Number of full house hands: " + fullHouse);
+        System.out.println("Number of four of a kind hands: " + fourOfAKind);
+        System.out.println("Number of three of a kind hands: " + threeOfAKind);
+        System.out.println("Number of two pair hands: " + twoPair);
+        System.out.println("Number of one pair hands: " + pair);
+        System.out.println("Number of high card hands: " + highCard);
     }
 }
 
-//Scrap code?
-
-//            for (int i = 0; i < numbers.length; i++) {
-//                if (numbers[i].equals(",") || numbers[i].equals("|")) {
-//
-//                } else if(numbers[i].equals("J")) {
-//                    values[i] = 11;
-//                    i += 4;
-//                } else if (numbers[i].equals("Q")) {
-//                    values[i] = 12;
-//                    i += 5;
-//                } else if (numbers[i].equals("K")) {
-//                    values[i] = 13;
-//                    i += 4;
-//                } else if (numbers[i].equals("A")) {
-//                    values[i] = 14;
-//                    i += 3;
-//                } else {
-//                    values[i] = Integer.parseInt(numbers[i]);
-//                }
-//            }
-
-//            int inc = 0;
-//            for (int i = 0; i < numbers.length-1; i++) {
-//                if (values[i] <= values[i+1]){
-//                    inc++;
-//                }
-//            }
-//
+//To see array
+//            System.out.println(Arrays.toString(numbers));

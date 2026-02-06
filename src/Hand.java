@@ -13,16 +13,18 @@ public class Hand {
         this.bidvalue = 0;
     }
 
-    public void determineHandType() {
-        int[] cardNum = new int[13];
+    public int determineHandType() {
+        int[] cardNum = new int[14];
         for (int i = 0; i < this.cards.length; i++) {
             if (this.cards[i].equals("Ace")) {
-               cardNum[12]++;
+                cardNum[13]++;
             } else if (this.cards[i].equals("King")) {
-                cardNum[11]++;
+                cardNum[12]++;
             } else if (this.cards[i].equals("Queen")) {
-                cardNum[10]++;
+                cardNum[11]++;
             } else if (this.cards[i].equals("Jack")) {
+                cardNum[10]++;
+            } else if (Integer.parseInt(this.cards[i]) == 10) {
                 cardNum[9]++;
             } else if (Integer.parseInt(this.cards[i]) == 9) {
                 cardNum[8]++;
@@ -45,14 +47,30 @@ public class Hand {
             }
         }
 
-        //use "break"(?)
-//            for (i = 0; i < cardNum.length-1; i++){
-//                if (cardNum[i] == 5) {
-//
-//                }
-//            }
+        int tempPair = 0;
+        int tempThree = 0;
+        for (int i = 0; i < cardNum.length - 1; i++) {
+            if (cardNum[i] == 5) {
+                return 6;
+            } else if (cardNum[i] == 4) {
+                return 4;
+            } else if (cardNum[i] == 3) {
+                tempThree++;
+            } else if (cardNum[i] == 2) {
+                tempPair++;
+            }
+        }
 
-        System.out.println(Arrays.toString(cardNum));
+        if (tempPair == 1 && tempThree == 1) {
+            return 5;
+        } else if (tempThree == 1) {
+            return 3;
+        } else if (tempPair == 2) {
+            return 2;
+        } else if (tempPair == 1) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
-
 }
