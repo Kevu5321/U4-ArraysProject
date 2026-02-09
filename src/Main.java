@@ -28,17 +28,17 @@ public class Main {
         int twoPair = 0;
         int pair = 0;
         int highCard = 0;
+        int totalBidValue = 0;
 
         for (String line : lines) {
             int bar = line.indexOf("|");
 
             String hand = line.substring(0, bar);
             String bid = line.substring(bar + 1);
+            int bidValue = Integer.parseInt(bid);
 
             String[] numbers = hand.split(",");
-
-            int[] values = new int[numbers.length];
-            Hand hand1 = new Hand(numbers);
+            Hand hand1 = new Hand(numbers, bidValue);
 
             if (hand1.determineHandType() == 6){
                 fiveOfAKind++;
@@ -55,8 +55,6 @@ public class Main {
             } else if (hand1.determineHandType() == 0) {
                 highCard++;
             }
-
-            System.out.println();
         }
 
         //Not sure why there is a gap above when printed
@@ -67,6 +65,7 @@ public class Main {
         System.out.println("Number of two pair hands: " + twoPair);
         System.out.println("Number of one pair hands: " + pair);
         System.out.println("Number of high card hands: " + highCard);
+        System.out.println("Total Bid Value: " + totalBidValue);
     }
 }
 

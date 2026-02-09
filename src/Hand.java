@@ -6,11 +6,11 @@ public class Hand {
     private int rank;
     private int bidvalue;
 
-    public Hand (String[] numbers) {
+    public Hand (String[] numbers, int bidvalue) {
         this.cards = numbers;
         this.handType = 0;
         this.rank = 0;
-        this.bidvalue = 0;
+        this.bidvalue = bidvalue;
     }
 
     public int determineHandType() {
@@ -49,10 +49,12 @@ public class Hand {
 
         int tempPair = 0;
         int tempThree = 0;
-        for (int i = 0; i < cardNum.length - 1; i++) {
+        for (int i = 0; i < cardNum.length; i++) {
             if (cardNum[i] == 5) {
+                this.handType = 6;
                 return 6;
             } else if (cardNum[i] == 4) {
+                this.handType = 4;
                 return 4;
             } else if (cardNum[i] == 3) {
                 tempThree++;
@@ -62,15 +64,21 @@ public class Hand {
         }
 
         if (tempPair == 1 && tempThree == 1) {
+            this.handType = 5;
             return 5;
         } else if (tempThree == 1) {
+            this.handType = 3;
             return 3;
         } else if (tempPair == 2) {
+            this.handType = 2;
             return 2;
         } else if (tempPair == 1) {
+            this.handType = 1;
             return 1;
         } else {
             return 0;
         }
     }
+
+
 }
