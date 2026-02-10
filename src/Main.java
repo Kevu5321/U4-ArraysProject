@@ -30,6 +30,7 @@ public class Main {
         int highCard = 0;
         int totalBidValue = 0;
 
+        int totalHands = 0;
         for (String line : lines) {
             int bar = line.indexOf("|");
 
@@ -39,6 +40,7 @@ public class Main {
 
             String[] numbers = hand.split(",");
             Hand hand1 = new Hand(numbers, bidValue);
+            totalHands++;
 
             if (hand1.determineHandType() == 6){
                 fiveOfAKind++;
@@ -56,6 +58,14 @@ public class Main {
                 highCard++;
             }
         }
+
+        if (fiveOfAKind > 1 || fullHouse > 1 || fourOfAKind > 1 || threeOfAKind > 1
+        || twoPair > 1 || pair > 1 || highCard > 1) {
+            for (int i = 0; i < totalHands; i++) {
+
+            }
+        }
+
 
         //Not sure why there is a gap above when printed
         System.out.println("Number of five of a kind hands: " + fiveOfAKind);
