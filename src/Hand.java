@@ -15,50 +15,50 @@ public class Hand {
 
     public int determineHandType() {
         int[] cardNum = new int[14];
-        for (int i = 0; i < this.cards.length; i++) {
-            if (this.cards[i].equals("Ace")) {
+        for (String card : this.cards) {
+            if (card.equals("Ace")) {
                 cardNum[13]++;
-            } else if (this.cards[i].equals("King")) {
+            } else if (card.equals("King")) {
                 cardNum[12]++;
-            } else if (this.cards[i].equals("Queen")) {
+            } else if (card.equals("Queen")) {
                 cardNum[11]++;
-            } else if (this.cards[i].equals("Jack")) {
+            } else if (card.equals("Jack")) {
                 cardNum[10]++;
-            } else if (Integer.parseInt(this.cards[i]) == 10) {
+            } else if (Integer.parseInt(card) == 10) {
                 cardNum[9]++;
-            } else if (Integer.parseInt(this.cards[i]) == 9) {
+            } else if (Integer.parseInt(card) == 9) {
                 cardNum[8]++;
-            } else if (Integer.parseInt(this.cards[i]) == 8) {
+            } else if (Integer.parseInt(card) == 8) {
                 cardNum[7]++;
-            } else if (Integer.parseInt(this.cards[i]) == 7) {
+            } else if (Integer.parseInt(card) == 7) {
                 cardNum[6]++;
-            } else if (Integer.parseInt(this.cards[i]) == 6) {
+            } else if (Integer.parseInt(card) == 6) {
                 cardNum[5]++;
-            } else if (Integer.parseInt(this.cards[i]) == 5) {
+            } else if (Integer.parseInt(card) == 5) {
                 cardNum[4]++;
-            } else if (Integer.parseInt(this.cards[i]) == 4) {
+            } else if (Integer.parseInt(card) == 4) {
                 cardNum[3]++;
-            } else if (Integer.parseInt(this.cards[i]) == 3) {
+            } else if (Integer.parseInt(card) == 3) {
                 cardNum[2]++;
-            } else if (Integer.parseInt(this.cards[i]) == 2) {
+            } else if (Integer.parseInt(card) == 2) {
                 cardNum[1]++;
-            } else if (Integer.parseInt(this.cards[i]) == 1) {
+            } else if (Integer.parseInt(card) == 1) {
                 cardNum[0]++;
             }
         }
 
         int tempPair = 0;
         int tempThree = 0;
-        for (int i = 0; i < cardNum.length; i++) {
-            if (cardNum[i] == 5) {
+        for (int j : cardNum) {
+            if (j == 5) {
                 this.handType = 6;
                 return 6;
-            } else if (cardNum[i] == 4) {
+            } else if (j == 4) {
                 this.handType = 4;
                 return 4;
-            } else if (cardNum[i] == 3) {
+            } else if (j == 3) {
                 tempThree++;
-            } else if (cardNum[i] == 2) {
+            } else if (j == 2) {
                 tempPair++;
             }
         }
@@ -80,5 +80,16 @@ public class Hand {
         }
     }
 
+// not sure how to make two hand objects at once when using
+// (String line : lines) loop in main
 
+//    public int compareHands (Hand x) {
+//        for (int i = 0; i < this.cards.length; i++) {
+//            if (Integer.parseInt(this.cards[i]) == Integer.parseInt(x[i])) {
+//
+//            }
+//        }
+//
+//        return 0;
+//    }
 }

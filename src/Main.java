@@ -59,15 +59,20 @@ public class Main {
             }
         }
 
-        if (fiveOfAKind > 1 || fullHouse > 1 || fourOfAKind > 1 || threeOfAKind > 1
-        || twoPair > 1 || pair > 1 || highCard > 1) {
-            for (int i = 0; i < totalHands; i++) {
+//        if (fiveOfAKind > 1 || fullHouse > 1 || fourOfAKind > 1 || threeOfAKind > 1
+//        || twoPair > 1 || pair > 1 || highCard > 1) {
+//            for (int i = 0; i < totalHands; i++) {
+//
+//            }
+//        }
 
-            }
-        }
+//        if (fiveOfAKind > 1) {
+//            for (int i = 0; i < hand.length(); i++) {
+//
+//            }
+//        }
 
 
-        //Not sure why there is a gap above when printed
         System.out.println("Number of five of a kind hands: " + fiveOfAKind);
         System.out.println("Number of full house hands: " + fullHouse);
         System.out.println("Number of four of a kind hands: " + fourOfAKind);
